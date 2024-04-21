@@ -10,7 +10,7 @@ def display_color_palette(color_list):
     st.sidebar.json(color_list, expanded=False)
     # Display the color palette
     for palette_item in color_list:
-        with st.expander(f"Color pallete: {palette_item["id"]}"):
+        with st.expander(f"Color pallete: {palette_item['id']}"):
             colors = palette_item["colors"]
             for color in colors:
                 st.code(color['hexCode'])
