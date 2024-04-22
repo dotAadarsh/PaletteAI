@@ -2,6 +2,8 @@
 
 **Your Personalized Palette, Powered by AI**
 
+![PaletteAI](https://github.com/dotAadarsh/PaletteAI/assets/71810927/2563c15e-a344-4d75-9d4e-1a197995bece)
+
 ## Introduction
 
 Palette AI is a web application that generates personalized color palettes powered by AI. It is developed as a submission for the [Supabase Open Source Hackathon 2024](https://supabase.com/blog/supabase-oss-hackathon).
@@ -65,6 +67,10 @@ To get a local copy up and running follow these simple steps.
 - Click on Save Color Palette to save the palette to the Supabase database.
 - Use the Explore tab to find all the generated color palettes
 
+## SQL Definition
+
+![SQL Defition](https://github.com/dotAadarsh/PaletteAI/assets/71810927/481a8fcd-95f7-44cd-a152-afd8ddc20f33)
+
 ## Supabase Edge Function
 
 You can find the code that is deployed to generate the image in the functions/text-to-image/index.ts file. 
@@ -78,4 +84,11 @@ Read this [Hugging Face Inference API](https://supabase.com/docs/guides/ai/huggi
 ## Exploring PGroonga: Multilingual Full Text Search
 
 So I though of implement a full text search for the generated color palette. PGroonga is a PostgreSQL extension adding a full text search indexing method based on Groonga. Follow [PGroonga: Multilingual Full Text Search](https://supabase.com/docs/guides/database/extensions/pgroonga) guide to know how to use this. Here is the screenshot of its implementation on Supabase SQL Editor.
+
+![SQL-Editor](https://github.com/dotAadarsh/PaletteAI/assets/71810927/57bc68f1-3b10-4568-a29c-34e36586d79a)
+
+
+
+
+
 
