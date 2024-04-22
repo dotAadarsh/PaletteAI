@@ -13,6 +13,7 @@ The color palette is generated based on the purpose, targeted audience, theme, a
 - [Streamlit](https://streamlit.io/)
 - [Gemini AI](https://ai.google.dev/)
 - [Supabase](https://supabase.io/)
+- [Hugging Face](https://huggingface.co/)
 
 ## Features
 
@@ -62,3 +63,19 @@ To get a local copy up and running follow these simple steps.
 - Click on Generate Color Palette.
 - The generated color palette will be displayed.
 - Click on Save Color Palette to save the palette to the Supabase database.
+- Use the Explore tab to find all the generated color palettes
+
+## Supabase Edge Function
+
+You can find the code that is deployed to generate the image in the functions/text-to-image/index.ts file. 
+
+Explanation: This Deno script sets up an HTTP server that converts text prompts into images using the Hugging Face Inference library. It imports the `serve` function from the Deno standard library for HTTP server and the `HfInference` class from the Hugging Face Inference library. After parsing the JSON data from the request, it uses the Hugging Face Inference library to convert the received text prompt into an image, employing the model 'stabilityai/stable-diffusion-2' and disabling caching. Finally, it returns the converted image as the response.
+
+This code is deployed to the Supabase Edge Function. A seprate URL is generated once deployed which we can access it to generate the image.
+
+Read this [Hugging Face Inference API](https://supabase.com/docs/guides/ai/hugging-face) for more info. Note: You need to add the Hugging Face API. 
+
+## Exploring PGroonga: Multilingual Full Text Search
+
+So I though of implement a full text search for the generated color palette. PGroonga is a PostgreSQL extension adding a full text search indexing method based on Groonga. Follow [PGroonga: Multilingual Full Text Search](https://supabase.com/docs/guides/database/extensions/pgroonga) guide to know how to use this. Here is the screenshot of its implementation on Supabase SQL Editor.
+
