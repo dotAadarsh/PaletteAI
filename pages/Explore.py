@@ -7,10 +7,10 @@ SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 def display_color_palette(color_list):
-    st.sidebar.json(color_list, expanded=False)
+    # st.sidebar.json(color_list, expanded=False)
     # Display the color palette
     for palette_item in color_list:
-        with st.expander(f"Color pallete: {palette_item['id']}"):
+        with st.expander(f"{palette_item['purpose']} | {palette_item['targeted_audience']} | {palette_item['theme']}"):
             colors = palette_item["colors"]
             for color in colors:
                 st.code(color['hexCode'])

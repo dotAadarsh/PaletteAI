@@ -95,7 +95,7 @@ def main():
     st.caption("Your Personalized Palette, Powered by AI")
     with st.sidebar:
         st.markdown("Submission for [Supabase Open Source Hackathon 2024](https://supabase.com/blog/supabase-oss-hackathon)")
-        st.info("Built on top of Gemini AI AND Supabase")
+        st.info("Built on top of Gemini AI and Supabase")
         
     color_palette = None
     # Initialize color palette in session state (empty list initially)
@@ -105,10 +105,10 @@ def main():
     # Get user input
     col1, col2 = st.columns(2)
     with col1: 
-        purpose = st.selectbox("Select Purpose", ["Website", "Mobile App", "Branding", "Marketing Material"])
-        audience = st.selectbox("Select Targeted Audience", ["Youth Generation", "Professionals", "Children", "Elderly"])
+        purpose = st.selectbox("Select Purpose", ["Website", "Mobile App", "Branding", "Marketing Material", "Social Media"])
+        audience = st.selectbox("Select Targeted Audience", ["Youth Generation", "Professionals", "Children", "Elderly", "All Ages", "Men", "Women"])
     with col2:
-        theme = st.selectbox("Select Theme", ["Minimalistic", "Playful", "Corporate", "Elegant"])
+        theme = st.selectbox("Select Theme", ["Minimalistic", "Playful", "Corporate", "Elegant", "Vintage", "Modern", "Natural", "Futuristic"])
         num_colors = st.selectbox("Select Number of Colors", [3, 4, 5, 6])
     
     user_input = st.text_input("Elaborate to get the desired result")
@@ -120,7 +120,6 @@ def main():
         color_palette = get_colors(final_prompt)
         if color_palette:
             st.session_state["color_palette"] = color_palette  # Update session state
-            st.write("Generated Color Palette ✨:")
 
     # Check if color palette exists in session state
     if st.session_state["color_palette"]:
