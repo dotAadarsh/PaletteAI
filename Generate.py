@@ -2,6 +2,7 @@ import streamlit as st
 import json
 import google.generativeai as genai
 from supabase import create_client, Client
+import requests
 
 st.set_page_config(
     page_title="Palette AI | Your Personalized Palette, Powered by AI",
@@ -20,6 +21,22 @@ SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 url: str = SUPABASE_URL
 key: str = SUPABASE_KEY
 supabase: Client = create_client(url, key)
+
+
+def text_to_image(prompt):
+    url = "https://jftmkgknyypunbrglkja.supabase.co/functions/v1/text-to-image"
+    headers = {"Content-Type": "application/json"}
+    data = {"prompt": prompt}
+    
+    response = requests.post(url, headers=headers, json=data)
+    
+    if response.status_code == 200:
+        with open('result.jpg', 'wb') as f:
+            f.write(response.content)
+        st.sidebar.write("Generated design:")
+        st.sidebar.image('result.jpg', use_column_width=True)
+    else:
+        st.error(f"Error: {response.text}")
 
 def save_to_supabase(color_palette, purpose, audience, theme, num_colors, user_input):
     # Insert the color palette into Supabase
@@ -118,6 +135,8 @@ def main():
     # Generate button for generating color palette
     if st.button("Generate Color Palette"):
         color_palette = get_colors(final_prompt)
+        image_prompt = f"A wireframe design for a {purpose} with the theme: {theme}"
+        text_to_image(image_prompt)
         if color_palette:
             st.session_state["color_palette"] = color_palette  # Update session state
 
