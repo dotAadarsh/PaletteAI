@@ -94,19 +94,12 @@ def get_colors(prompt):
 
 
 def display_color_palette(palette):
-    # Display the color palette
-    for color in palette:
-        st.code(color['hexCode'])
-        st.markdown(
-            f"""
-            <div style="background-color: {color['hexCode']}; width: 100px; height: 100px; border: 2px solid #555; border-radius: 10px;"></div>
-            <p>{color['colorName']}</p>
-            <p>{color['explanation']}</p>
-            """,
-            unsafe_allow_html=True
-        )
 
-
+    for color in palette["palette"]:
+        st.subheader(color["colorName"])
+        st.color_picker("Hex Code:", color["hexCode"], key=color["colorName"])
+        st.write("Explanation:", color["explanation"])
+            
 def main():
     st.title("Palette AI 🎨")
     st.caption("Your Personalized Palette, Powered by AI")
